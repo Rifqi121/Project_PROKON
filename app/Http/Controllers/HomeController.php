@@ -11,4 +11,21 @@ class HomeController extends Controller
     {
         return view('homepage'); // Mengarahkan ke view resources/views/homepage.blade.php
     }
+    public function kegiatan()
+    {
+        return view('kegiatan');
+    }
+    public function shodaqoh()
+    {
+        return view('shodaqoh');
+    }
+    public function laporan()
+    {
+        return view('laporan');
+    }
+    public function jadwalsholat()
+    {
+        return view('jadwalsholat');
+    }
+
 }
