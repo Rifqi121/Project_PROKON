@@ -5,7 +5,7 @@
 <div class="row mt-1" style="height: 70vh;">
     <div class="col-sm-8 h-100 pe-0">
         <div class="card h-100" style="background-color: #2A332E;">
-            
+
         </div>
     </div>
 
@@ -20,29 +20,29 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mt-1 gap-2 rounded" style="height: 10vh;">
-    <a href="/beranda" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/beranda" class="nav-btn">
+        <div>
             <i class="bi bi-house-fill"></i> Beranda
         </div>
     </a>
-    <a href="/kegiatan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/kegiatan" class="nav-btn">
+        <div>
             <i class="bi bi-calendar-event-fill"></i> Kegiatan
         </div>
     </a>
-    <a href="/laporan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/laporan" class="nav-btn">
+        <div>
             <i class="bi bi-journal-text"></i> Laporan
         </div>
     </a>
-    <a href="/shodaqoh" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/shodaqoh" class="nav-btn">
+        <div>
             <i class="bi bi-cash"></i> Shodaqoh
         </div>
     </a>
-    <a href="#jadwalsholat" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
-            <i class="bi bi-clock-fill"></i> Jadwal Sholat
+    <a href="#jadwalsholat" class="nav-btn active">
+        <div>
+            <i class="bi bi-clock-fill"></i>
         </div>
     </a>
 </div>

@@ -7,8 +7,27 @@
         <div class="card h-100" style="background-color: #2A332E;">
             <div class="container p-4">
                 <h2 style="font-size: 1.5rem; font-weight: bold; color: #FBFADA; margin-bottom: 1.5rem;">Laporan</h2>
-                <div class="table-responsive">
-                    <table class="table table-striped laporan">
+                <div style="background-color: #374139;">
+                <div class="container py-3 d-flex justify-content-center align-items-center">
+                    <div class="d-flex align-items-center me-3">
+                        <label for="entries-select" class="me-2" style="color: #FBFADA;">Show</label>
+                        <select id="entries-select" class="form-select form-select-sm w-auto">
+                            <option value="5" selected>5</option>
+                            <option value="10">10</option>
+                        </select>
+                        <span class="ms-2" style="color: #FBFADA;">entries</span>
+                    </div>
+                    
+                    <!-- Search -->
+                    <div class="input-group input-group-sm" style="width: 80%;">
+                        <span class="input-group-text">
+                            <i class="bi bi-search"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Laporan Jumat">
+                    </div>
+                </div>
+
+                    <table class="laporan table table-responsive table-striped table-borderless table-hover" style="background-color: #374139;">
                         <thead>
                             <tr>
                                 <th>Deskripsi</th>
@@ -20,53 +39,41 @@
                         <tbody>
                             <tr>
                                 <td>Infaq Sholat Jumat</td>
-                                <td>13/05/2022</td>
-                                <td>$4.95</td>
+                                <td>1/1/2023</td>
+                                <td>Rp. 100.000</td>
                                 <td>Infaq Jumat</td>
                             </tr>
                             <tr>
                                 <td>Infaq Sholat Jumat</td>
-                                <td>22/05/2022</td>
-                                <td>$8.95</td>
+                                <td>1/1/2023</td>
+                                <td>Rp. 100.000</td>
                                 <td>Infaq Jumat</td>
                             </tr>
                             <tr>
                                 <td>Infaq Sholat Jumat</td>
-                                <td>15/06/2022</td>
-                                <td>$1,149.95</td>
+                                <td>1/1/2023</td>
+                                <td>Rp. 100.000</td>
                                 <td>Infaq Jumat</td>
                             </tr>
                             <tr>
                                 <td>Infaq Sholat Jumat</td>
-                                <td>06/09/2022</td>
-                                <td>$899.95</td>
+                                <td>1/1/2023</td>
+                                <td>Rp. 100.000</td>
                                 <td>Infaq Jumat</td>
                             </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>25/09/2022</td>
-                                <td>$22.95</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>04/10/2022</td>
-                                <td>$54.95</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>17/10/2022</td>
-                                <td>$174.95</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                        </tbody>
                     </table>
-                </div>
-                <div class="pagination d-flex justify-content-center">
-                    <a href="#" class="active">1</a>
-                    <a href="#">2</a>
-                    <a href="#">3</a>
+                    <ul class="lap-page pagination justify-content-center py-3">
+                        <li class="page-item disabled">
+                            <a class="page-link">Previous</a>
+                        </li>
+                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                        <li class="page-item"><a class="page-link" href="#">2</a></li>
+                        <li class="page-item"><a class="page-link" href="#">3</a></li>
+                        <li class="page-item">
+                            <a class="page-link" href="#">Next</a>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
         </div>
@@ -83,28 +90,28 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mt-1 gap-2 rounded" style="height: 10vh;">
-    <a href="/beranda" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/beranda" class="nav-btn">
+        <div>
             <i class="bi bi-house-fill"></i> Beranda
         </div>
     </a>
-    <a href="/kegiatan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/kegiatan" class="nav-btn">
+        <div>
             <i class="bi bi-calendar-event-fill"></i> Kegiatan
         </div>
     </a>
-    <a href="#laporan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
-            <i class="bi bi-journal-text"></i> Laporan
+    <a href="#laporan" class="nav-btn active">
+        <div>
+            <i class="bi bi-journal-text"></i>
         </div>
     </a>
-    <a href="/shodaqoh" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/shodaqoh" class="nav-btn">
+        <div>
             <i class="bi bi-cash"></i> Shodaqoh
         </div>
     </a>
-    <a href="/jadwalsholat" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/jadwalsholat" class="nav-btn">
+        <div>
             <i class="bi bi-clock-fill"></i> Jadwal Sholat
         </div>
     </a>

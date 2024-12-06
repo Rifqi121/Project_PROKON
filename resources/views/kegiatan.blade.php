@@ -13,7 +13,8 @@
                             style="position: relative; border: none; overflow: hidden; background-image: url('https://png.pngtree.com/thumb_back/fw800/background/20240410/pngtree-beautiful-masjid-design-background-image_15712084.jpg'); background-size: cover; background-position: center; min-height: 25vh;">
                             <div
                                 style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
-                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Pengumuman</h5>
+                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Pengumuman
+                                </h5>
                                 <a href="#" style="font-size: 0.9rem; text-decoration: none; color: #FBFADA;">Klik
                                     Selengkapnya</a>
                             </div>
@@ -24,7 +25,8 @@
                             style="position: relative; border: none; overflow: hidden; background-image: url('https://ponpes.alhasanah.sch.id/wp-content/uploads/2020/05/Pentingnya-Kajian-Walaupun-Minimal-Sekali-Sepekan.jpg'); background-size: cover; background-position: center; min-height: 25vh;">
                             <div
                                 style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
-                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Jadwal Kajian</h5>
+                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Jadwal
+                                    Kajian</h5>
                                 <a href="#" style="font-size: 0.9rem; text-decoration: none; color: #FBFADA;">Klik
                                     Selengkapnya</a>
                             </div>
@@ -33,8 +35,10 @@
                     <div class="col-md-6">
                         <div class="rounded"
                             style="position: relative; border: none; overflow: hidden; background-image: url('https://live.staticflickr.com/159/335382059_9d5176bcb0_b.jpg'); background-size: cover; background-position: center; min-height: 25vh;">
-                            <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
-                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Jadwal Jumat</h5>
+                            <div
+                                style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
+                                <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Jadwal
+                                    Jumat</h5>
                                 <a href="#" style="font-size: 0.9rem; text-decoration: none; color: #FBFADA;">Klik
                                     Selengkapnya</a>
                             </div>
@@ -67,28 +71,28 @@
 </div>
 
 <div class="d-flex justify-content-between align-items-center mt-1 gap-2 rounded" style="height: 10vh;">
-    <a href="/beranda" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/beranda" class="nav-btn">
+        <div>
             <i class="bi bi-house-fill"></i> Beranda
         </div>
     </a>
-    <a href="#kegiatan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
-            <i class="bi bi-calendar-event-fill"></i> Kegiatan
+    <a href="#kegiatan" class="nav-btn active">
+        <div>
+            <i class="bi bi-calendar-event-fill"></i>
         </div>
     </a>
-    <a href="/laporan" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/laporan" class="nav-btn">
+        <div>
             <i class="bi bi-journal-text"></i> Laporan
         </div>
     </a>
-    <a href="/shodaqoh" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/shodaqoh" class="nav-btn">
+        <div>
             <i class="bi bi-cash"></i> Shodaqoh
         </div>
     </a>
-    <a href="/jadwalsholat" class="text-decoration-none flex-grow-1" style="color: #FBFADA;">
-        <div class="rounded text-center p-3" style="background-color: #2A332E;">
+    <a href="/jadwalsholat" class="nav-btn">
+        <div>
             <i class="bi bi-clock-fill"></i> Jadwal Sholat
         </div>
     </a>
