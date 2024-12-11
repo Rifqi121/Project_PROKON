@@ -115,26 +115,30 @@
             color: var(--pagination-active-color, #000000);
         }
 
-        table.laporan td, table.laporan th {
+        table.laporan td,
+        table.laporan th {
             padding-left: 20px !important;
         }
 
         #entries-select {
-            background-color: #FBFADA; 
-            color: #374139; 
+            background-color: #FBFADA;
+            color: #374139;
             border: none;
         }
+
         .input-group .form-control {
-            background-color: #FBFADA; 
-            color: #374139; 
+            background-color: #FBFADA;
+            color: #374139;
             border: none;
         }
+
         .input-group .form-control::placeholder {
-            color: #6b6b6b; 
+            color: #6b6b6b;
         }
+
         .input-group .input-group-text {
-            background-color: #FBFADA; 
-            color: #374139; 
+            background-color: #FBFADA;
+            color: #374139;
             border: none;
         }
 
@@ -151,6 +155,61 @@
         <span style="font-size: 15px;">Bandung | 08:02</span>
     </div>
     @yield('content')
+
+    <!-- Card Kanan -->
+    <div class="col-sm-4 d-flex flex-column justify-content-between h-100">
+        <div class="card mb-2 h-50" style="background-color: #2A332E;">
+            <div class="card-body"></div>
+        </div>
+        <div class="card h-50" style="background-color: #2A332E;">
+            <div class="card-body"></div>
+        </div>
+    </div>
+    </div>
+
+    <!-- Bagian Navigasi Bawah -->
+    <div class="d-flex justify-content-between align-items-center mt-1 gap-2 rounded" style="height: 10vh;">
+        <a href="{{ route('home') }}" class="nav-btn {{ Route::is('home') ? 'active' : '' }}">
+            <div>
+                <i class="bi bi-house-fill"></i>
+                @unless(Route::is('home'))
+                Beranda
+                @endunless
+            </div>
+        </a>
+        <a href="{{ route('kegiatan') }}" class="nav-btn {{ Route::is('kegiatan') ? 'active' : '' }}">
+            <div>
+                <i class="bi bi-calendar-event-fill"></i>
+                @unless(Route::is('kegiatan'))
+                Kegiatan
+                @endunless
+            </div>
+        </a>
+        <a href="{{ route('laporan') }}" class="nav-btn {{ Route::is('laporan') ? 'active' : '' }}">
+            <div>
+                <i class="bi bi-journal-text"></i>
+                @unless(Route::is('laporan'))
+                Laporan
+                @endunless
+            </div>
+        </a>
+        <a href="{{ route('shodaqoh') }}" class="nav-btn {{ Route::is('shodaqoh') ? 'active' : '' }}">
+            <div>
+                <i class="bi bi-cash"></i>
+                @unless(Route::is('shodaqoh'))
+                Shodaqoh
+                @endunless
+            </div>
+        </a>
+        <a href="{{ route('jadwalsholat') }}" class="nav-btn {{ Route::is('jadwalsholat') ? 'active' : '' }}">
+            <div>
+                <i class="bi bi-clock-fill"></i>
+                @unless(Route::is('jadwalsholat'))
+                Jadwal Sholat
+                @endunless
+            </div>
+        </a>
+    </div>
 
     <div class="rounded mt-1 p-1" style="background-color: #2A332E; height: 5vh">
         <div class="col text-center">
