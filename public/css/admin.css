@@ -1,0 +1,191 @@
+body {
+    background-color: #2A332E;
+    color: #FBFADA;
+    font-family: "Jost", sans-serif;
+}
+
+*{
+    font-family: "Jost", sans-serif;
+}
+
+a{
+    text-decoration: none;
+}
+
+.sidebar {
+    height: 100vh;
+    background-color: #1F2823;
+    color: #FBFADA;
+    overflow: hidden;
+}
+
+.sidebar ul {
+    max-height: 80vh; 
+    overflow-y: auto;             
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.sidebar .dropdown-item {
+    white-space: nowrap; 
+    overflow: hidden;  
+    text-overflow: ellipsis; 
+}
+
+.sidebar a {
+    color: #FBFADA;
+    text-decoration: none;
+}
+
+.sidebar a:hover {
+    background-color: #3A4742;
+    color: #FFF;
+}
+
+.navbar-brand {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.sidebar .nav-link.active {
+    background-color: #3A4742; 
+    color: #FFF;             
+    font-weight: bold;      
+}
+
+.dropdown-item {
+    border-bottom: 1px solid #ccc;
+    color: inherit; 
+    text-decoration: none;
+}
+
+.content {
+    padding: 20px;
+}
+
+.tabel-data {
+    --bs-table-striped-bg: #444e45;
+}
+
+.tabel-data>tbody>tr>td {
+    background-color: #374139;
+    color: #FBFADA;
+    font-size: 10pt;
+}
+
+.tabel-data>thead>tr>th {
+    background-color: #374139;
+    color: #FBFADA;
+    font-size: 10pt;
+}
+
+.lap-page .page-link {
+    background-color: var(--pagination-bg, #374139);
+    color: var(--pagination-color, #FBFADA);
+    border-color: var(--pagination-bg, #374139);
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.lap-page .page-link:hover {
+    background-color: darken(var(--pagination-bg, #374139), 10%);
+    color: var(--pagination-color-hover, #FFFFFF);
+}
+
+.lap-page .page-item.active .page-link {
+    background-color: var(--pagination-active-bg, #adbc9f);
+    color: var(--pagination-active-color, #FFFFFF);
+    border-color: var(--pagination-active-bg, #adbc9f);
+    font-weight: bold;
+    border-radius: 15%;
+}
+
+.lap-page .page-item.active .page-link:hover {
+    background-color: var(--pagination-active-bg, #FBFADA);
+    color: var(--pagination-active-color, #000000);
+}
+
+table.tabel-data td,
+table.tabel-data th {
+    padding-left: 20px !important;
+}
+
+#entries-select {
+    background-color: #FBFADA;
+    color: #374139;
+    border: none;
+}
+
+.input-group .form-control {
+    background-color: #FBFADA;
+    color: #374139;
+    border: none;
+}
+
+.input-group .form-control::placeholder {
+    color: #6b6b6b;
+}
+
+.input-group .input-group-text {
+    background-color: #FBFADA;
+    color: #374139;
+    border: none;
+}
+
+.card {
+    background-color: #3A4A41;
+    color: #FBFADA;
+    border: none;
+    transition: transform 0.3s, box-shadow 0.3s;
+    height: 100%;
+}
+.card:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+.card-title {
+    font-weight: bold;
+    text-overflow: ellipsis;
+}
+
+.tambah{
+    background-color: #adbc9f;
+    color: #ffffff;
+}
+
+.tambah:hover{
+    background-color: #FBFADA;
+    color: #adbc9f;
+}
+
+.modal-content {
+    background-color: #2A332E;
+    color: #FBFADA;
+}
+
+.modal-content .form-control {
+    background-color: #2A332E;
+    color: #FBFADA;
+    border: 1px solid #FBFADA;
+}
+
+.modal-content .form-control::placeholder {
+    color: #FBFADA;
+    opacity: 0.7;
+}
+
+.modal-content label {
+    color: #FBFADA;
+}
+
+.form-select {
+    background-color: #2A332E;
+    color: #FBFADA;   
+}
+
+.form-select:hover, 
+.form-select:focus {
+    background-color: #3A4742; 
+    color: #FFF; 
+    outline: none;            
+}
