@@ -9,7 +9,7 @@ class HomeController extends Controller
     // Fungsi untuk halaman utama
     public function index()
     {
-        return view('homepage'); // Mengarahkan ke view resources/views/homepage.blade.php
+        return view('homepage');
     }
     public function kegiatan()
     {
