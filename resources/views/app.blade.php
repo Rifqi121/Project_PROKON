@@ -20,22 +20,28 @@
             height: 100vh;
         }
 
-        h1, h2, h3, h4, h5, h6, p{
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p {
             margin: 0;
         }
 
-        .layanan{
-            background-color: #2A332E; 
-            border: 1px solid; 
-            border-color: #FBFADA; 
+        .layanan {
+            background-color: #2A332E;
+            border: 1px solid;
+            border-color: #FBFADA;
             color: #FBFADA;
             margin-right: 5px;
         }
 
-        .fasilitas{
-            background-color: #2A332E; 
-            border: 1px solid; 
-            border-color: #FBFADA; 
+        .fasilitas {
+            background-color: #2A332E;
+            border: 1px solid;
+            border-color: #FBFADA;
             color: #FBFADA;
             margin-right: 5px;
         }
@@ -44,6 +50,7 @@
             background-color: #2A332E;
             color: #FBFADA;
         }
+
         .pagination a {
             color: #2A332E !important;
             background-color: #FBFADA !important;
@@ -53,16 +60,17 @@
             margin: 0 2px;
             text-decoration: none;
         }
+
         .pagination a.active {
             background-color: #2A332E !important;
             color: #FBFADA !important;
         }
-
     </style>
 </head>
 
-<body class="container-fluid p-2">
-    <div class="rounded py-3 px-4 d-flex justify-content-between align-items-center" style="background-color: #2A332E; height: 10vh">
+<body class="container-fluid p-2" style="overflow: hidden">
+    <div class="rounded py-3 px-4 d-flex justify-content-between align-items-center"
+        style="background-color: #2A332E; height: 10vh">
         <div class="d-flex flex-row align-items-center gap-2">
             <img src="{{ asset('image/logo.svg') }}" alt="logo" style="width: 15px; height: 15px;">
             <span style="font-size: 15px;">Al-Ukhuwwah</span>
