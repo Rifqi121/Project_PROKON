@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AgendaController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DeathController;
+use App\Http\Controllers\InventarisController;
 use App\Http\Controllers\JumatScheduleController;
 use App\Http\Controllers\KajianController;
 use App\Http\Controllers\PengumumanController;
@@ -29,6 +30,11 @@ Route::get('/admin/layanan', [ServiceController::class, 'index'])->name('adminLa
 Route::post('/admin/layanan', [ServiceController::class, 'store'])->name('layanan.store');
 Route::put('/admin/layanan/{service}', [ServiceController::class, 'update'])->name('layanan.update');
 Route::delete('/admin/layanan/{service}', [ServiceController::class, 'delete'])->name('layanan.delete');
+
+Route::get('/admin/inventaris', [InventarisController::class, 'index'])->name('inventaris');
+Route::post('/admin/inventaris', [InventarisController::class, 'store'])->name('inventaris.store');
+Route::put('/admin/inventaris/{inventaris}', [InventarisController::class, 'update'])->name('inventaris.update');
+Route::delete('/admin/inventaris/{inventaris}', [InventarisController::class, 'delete'])->name('inventaris.delete');
 
 Route::get('/admin/kematian', [DeathController::class, 'index'])->name('death');
 Route::post('/admin/kematian', [DeathController::class, 'store'])->name('death.store');

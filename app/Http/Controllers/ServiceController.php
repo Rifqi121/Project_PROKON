@@ -42,13 +42,11 @@ class ServiceController extends Controller
 
         $validatedData = ['layanan_name' => $request->input('layanan_name')];
 
-        // Cek jika ada perubahan data
         if ($service->layanan_name === $validatedData['layanan_name']) {
             return redirect()->route('adminLayanan')
                             ->with('info', 'Tidak ada perubahan data.');
         }
 
-        // Update dan cek hasilnya
         $updated = $service->update($validatedData);
 
         if ($updated) {

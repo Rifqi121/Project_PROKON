@@ -80,6 +80,22 @@
                             <span class="ms-2">Laporan Keuangan</span>
                         </a>
                     </li>
+                    <li class="nav-item mb-2">
+                        <a href="{{ route('death') }}"
+                            class="nav-link d-flex align-items-center {{ request()->routeIs('death') ? 'active' : '' }}"
+                            style="color: inherit; text-decoration: none;">
+                            <i class="bi bi-journal-text"></i>
+                            <span class="ms-2">Laporan Kematian</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="{{ route('inventaris') }}"
+                            class="nav-link d-flex align-items-center {{ request()->routeIs('inventaris') ? 'active' : '' }}"
+                            style="color: inherit; text-decoration: none;">
+                            <i class="bi bi-journal-text"></i>
+                            <span class="ms-2">Laporan Inventaris</span>
+                        </a>
+                    </li>
                 </ul>
             </nav>
 
