@@ -28,6 +28,22 @@
             </button>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <!-- Table -->
         <table class="tabel-data table table-responsive table-striped table-borderless table-hover"
             style="background-color: #374139;">
@@ -41,17 +57,45 @@
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Laporan ABC</td>
-                    <td>1/1/2023</td>
-                    <td>Rp. 10.000</td>
-                    <td>Donasi Kegiatan</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailLaporanModal">Detail</button>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editLaporanModal">Edit</button>
-                        <button class="btn btn-danger btn-sm">Hapus</button>
-                    </td>
-                </tr>
+                @foreach ($reports as $report)
+                    <tr>
+                        <td>{{ $report->judul_laporan }}</td>
+                        <td>{{ $report->tanggal_laporan }}</td>
+                        <td>{{ $report->jumlah_laporan }}</td>
+                        <td>{{ $report->jenis_laporan }}</td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <!-- Tombol Detail -->
+                                <button type="button" class="btn btn-primary btn-sm detail-report-btn"
+                                    data-bs-toggle="modal" data-bs-target="#detailLaporanModal"
+                                    data-id="{{ $report->id }}" data-judul="{{ $report->judul_laporan }}"
+                                    data-tanggal="{{ $report->tanggal_laporan }}" data-jenis="{{ $report->jenis_laporan }}"
+                                    data-jumlah="{{ $report->jumlah_laporan }}">
+                                    Detail
+                                </button>
+
+                                <!-- Tombol Edit -->
+                                <button type="button" class="btn btn-warning btn-sm edit-report-btn" data-bs-toggle="modal"
+                                    data-bs-target="#editReportModal" data-id="{{ $report->id }}"
+                                    data-judul="{{ $report->judul_laporan }}"
+                                    data-tanggal="{{ $report->tanggal_laporan }}"
+                                    data-jenis="{{ $report->jenis_laporan }}" data-jumlah="{{ $report->jumlah_laporan }}">
+                                    Edit
+                                </button>
+
+                                <!-- Tombol Hapus -->
+                                <form action="{{ route('laporan.delete', $report->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus laporan ini?')">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
         </table>
         <ul class="lap-page pagination justify-content-center py-3">
             <li class="page-item disabled">
@@ -67,35 +111,44 @@
     </div>
 
     <!-- Modal Tambah Laporan -->
-    <div class="modal fade" id="tambahLaporanModal" tabindex="-1" aria-labelledby="tambahLaporanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="tambahLaporanModal" tabindex="-1" aria-labelledby="tambahLaporanModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tambahLaporanModalLabel">Tambah Laporan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route('laporan.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
+                        <!-- Judul Laporan -->
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
+                            <label for="judul_laporan" class="form-label">Judul Laporan</label>
+                            <input type="text" class="form-control" id="judul_laporan" name="judul_laporan" required>
                         </div>
+
+                        <!-- Tanggal Laporan -->
                         <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                            <label for="tanggal_laporan" class="form-label">Tanggal Laporan</label>
+                            <input type="date" class="form-control" id="tanggal_laporan" name="tanggal_laporan" required>
                         </div>
+
+                        <!-- Jumlah Laporan -->
                         <div class="mb-3">
-                            <label for="amount" class="form-label">Amount</label>
-                            <input type="number" class="form-control" id="amount" name="amount" required>
+                            <label for="jumlah_laporan" class="form-label">Jumlah Laporan</label>
+                            <input type="number" class="form-control" id="jumlah_laporan" name="jumlah_laporan"
+                                min="0" required>
                         </div>
+
+                        <!-- Jenis Laporan -->
                         <div class="mb-3">
-                            <label for="jenis_pemasukan" class="form-label">Jenis Pemasukan</label>
-                            <select class="form-select" id="jenis_pemasukan" name="jenis_pemasukan" required>
-                                <option value="Donasi Kegiatan">Donasi Kegiatan</option>
-                                <option value="Zakat">Zakat</option>
-                                <option value="Infaq Masjid">Infaq Masjid</option>
-                                <option value="Infaq Jumat">Infaq Jumat</option>
+                            <label for="jenis_laporan" class="form-label">Jenis Laporan</label>
+                            <select class="form-select" id="jenis_laporan" name="jenis_laporan" required>
+                                <option value="" selected disabled>Pilih Jenis Laporan</option>
+                                <option value="Pendapatan">Pendapatan</option>
+                                <option value="Pengeluaran">Pengeluaran</option>
+                                <option value="Transaksi">Transaksi</option>
                             </select>
                         </div>
                     </div>
@@ -107,70 +160,81 @@
             </div>
         </div>
     </div>
+
 
     <!-- Modal Detail Laporan -->
-    <div class="modal fade" id="detailLaporanModal" tabindex="-1" aria-labelledby="detailLaporanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailLaporanModal" tabindex="-1" aria-labelledby="detailLaporanModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="detailLaporanModalLabel">Laporan</h5>
+                    <h5 class="modal-title" id="detailLaporanModalLabel">Detail Laporan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="GET">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" readonly style="resize: none;"></textarea>
-                        </div>
-                        <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="amount" class="form-label">Amount</label>
-                            <input type="number" class="form-control" id="amount" name="amount" readonly>
-                        </div>
-                        <div class="mb-3">
-                            <label for="jenis_pemasukan" class="form-label">Jenis Pemasukan</label>
-                            <input type="text" class="form-control" id="jenis_pemasukan" name="jenis_pemasukan" readonly>
-                        </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <label for="detail_judul_laporan" class="form-label">Judul Laporan</label>
+                        <input type="text" class="form-control" id="detail_judul_laporan" readonly>
                     </div>
-                </form>
+                    <div class="mb-3">
+                        <label for="detail_tanggal_laporan" class="form-label">Tanggal</label>
+                        <input type="date" class="form-control" id="detail_tanggal_laporan" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="detail_jenis_laporan" class="form-label">Jenis Laporan</label>
+                        <input type="text" class="form-control" id="detail_jenis_laporan" readonly>
+                    </div>
+                    <div class="mb-3">
+                        <label for="detail_jumlah_laporan" class="form-label">Jumlah</label>
+                        <input type="number" class="form-control" id="detail_jumlah_laporan" readonly>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
+
     <!-- Modal Edit Laporan -->
-    <div class="modal fade" id="editLaporanModal" tabindex="-1" aria-labelledby="editLaporanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editReportModal" tabindex="-1" aria-labelledby="editReportModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="editLaporanModalLabel">Edit Laporan</h5>
+                    <h5 class="modal-title" id="editReportModalLabel">Edit Report</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST">
+                <form id="editReportForm" action="#" method="POST">
                     @csrf
+                    @method('PUT')
                     <div class="modal-body">
+                        <!-- Judul Laporan -->
                         <div class="mb-3">
-                            <label for="deskripsi" class="form-label">Deskripsi</label>
-                            <textarea class="form-control" id="deskripsi" name="deskripsi" rows="3" required></textarea>
+                            <label for="edit_judul_report" class="form-label">Judul Report</label>
+                            <input type="text" class="form-control" id="edit_judul_report" name="judul_laporan"
+                                required>
                         </div>
+
+                        <!-- Tanggal Laporan -->
                         <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                            <label for="edit_tanggal_report" class="form-label">Tanggal Report</label>
+                            <input type="date" class="form-control" id="edit_tanggal_report" name="tanggal_laporan"
+                                required>
                         </div>
+
+                        <!-- Jumlah Laporan -->
                         <div class="mb-3">
-                            <label for="amount" class="form-label">Amount</label>
-                            <input type="number" class="form-control" id="amount" name="amount" required>
+                            <label for="edit_jumlah_report" class="form-label">Jumlah Report</label>
+                            <input type="number" class="form-control" id="edit_jumlah_report" name="jumlah_laporan"
+                                required>
                         </div>
+
+                        <!-- Jenis Laporan -->
                         <div class="mb-3">
-                            <label for="jenis_pemasukan" class="form-label">Jenis Pemasukan</label>
-                            <select class="form-select" id="jenis_pemasukan" name="jenis_pemasukan" required>
-                                <option value="Donasi Kegiatan">Donasi Kegiatan</option>
-                                <option value="Zakat">Zakat</option>
-                                <option value="Infaq Masjid">Infaq Masjid</option>
-                                <option value="Infaq Jumat">Infaq Jumat</option>
+                            <label for="edit_jenis_report" class="form-label">Jenis Report</label>
+                            <select class="form-select" id="edit_jenis_report" name="jenis_laporan" required>
+                                <option value="Pendapatan">Pendapatan</option>
+                                <option value="Pengeluaran">Pengeluaran</option>
+                                <option value="Transaksi">Transaksi</option>
                             </select>
                         </div>
                     </div>
@@ -182,5 +246,67 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const editButtons = document.querySelectorAll(".edit-report-btn");
+
+            // Modifikasi form dan input untuk modal edit
+            const modalForm = document.getElementById("editReportForm");
+            const inputJudul = document.getElementById("edit_judul_report");
+            const inputTanggal = document.getElementById("edit_tanggal_report");
+            const inputJenis = document.getElementById("edit_jenis_report");
+            const inputJumlah = document.getElementById("edit_jumlah_report");
+
+            // Event listener untuk tombol Edit
+            editButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const reportId = button.getAttribute("data-id");
+                    const reportJudul = button.getAttribute("data-judul");
+                    const reportTanggal = button.getAttribute("data-tanggal");
+                    const reportJenis = button.getAttribute("data-jenis");
+                    const reportJumlah = button.getAttribute("data-jumlah");
+
+                    // Update form action URL untuk modal edit
+                    modalForm.action = `/admin/DataKegiatan/Laporan/${reportId}`;
+
+                    // Update input fields untuk modal edit
+                    inputJudul.value = reportJudul;
+                    inputTanggal.value = reportTanggal;
+                    inputJenis.value = reportJenis;
+                    inputJumlah.value = reportJumlah;
+                });
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const detailButtons = document.querySelectorAll(".detail-report-btn");
+
+            // Ambil elemen-elemen input untuk modal detail
+            const inputJudul = document.getElementById("detail_judul_laporan");
+            const inputTanggal = document.getElementById("detail_tanggal_laporan");
+            const inputJenis = document.getElementById("detail_jenis_laporan");
+            const inputJumlah = document.getElementById("detail_jumlah_laporan");
+
+            // Event listener untuk tombol Detail
+            detailButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const reportId = button.getAttribute("data-id");
+                    const reportJudul = button.getAttribute("data-judul");
+                    const reportTanggal = button.getAttribute("data-tanggal");
+                    const reportJenis = button.getAttribute("data-jenis");
+                    const reportJumlah = button.getAttribute("data-jumlah");
+
+                    // Isi input fields dengan data laporan
+                    inputJudul.value = reportJudul;
+                    inputTanggal.value = reportTanggal;
+                    inputJenis.value = reportJenis;
+                    inputJumlah.value = reportJumlah;
+                });
+            });
+        });
+    </script>
+
 
 @endsection

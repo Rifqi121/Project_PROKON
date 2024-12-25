@@ -6,8 +6,22 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\Http\\Controllers\\AdminController' => $baseDir . '/app/Http/Controllers/AdminController.php',
+    'App\\Http\\Controllers\\AgendaController' => $baseDir . '/app/Http/Controllers/AgendaController.php',
+    'App\\Http\\Controllers\\AuthController' => $baseDir . '/app/Http/Controllers/AuthController.php',
     'App\\Http\\Controllers\\Controller' => $baseDir . '/app/Http/Controllers/Controller.php',
+    'App\\Http\\Controllers\\DeathController' => $baseDir . '/app/Http/Controllers/DeathController.php',
     'App\\Http\\Controllers\\HomeController' => $baseDir . '/app/Http/Controllers/HomeController.php',
+    'App\\Http\\Controllers\\JumatScheduleController' => $baseDir . '/app/Http/Controllers/JumatScheduleController.php',
+    'App\\Http\\Controllers\\KajianController' => $baseDir . '/app/Http/Controllers/KajianController.php',
+    'App\\Http\\Controllers\\ReportController' => $baseDir . '/app/Http/Controllers/ReportController.php',
+    'App\\Http\\Controllers\\ServiceController' => $baseDir . '/app/Http/Controllers/ServiceController.php',
+    'App\\Models\\Agenda' => $baseDir . '/app/Models/Agenda.php',
+    'App\\Models\\Death' => $baseDir . '/app/Models/Death.php',
+    'App\\Models\\JumatSchedule' => $baseDir . '/app/Models/JumatSchedule.php',
+    'App\\Models\\Kajian' => $baseDir . '/app/Models/Kajian.php',
+    'App\\Models\\Report' => $baseDir . '/app/Models/Report.php',
+    'App\\Models\\Service' => $baseDir . '/app/Models/Service.php',
     'App\\Models\\User' => $baseDir . '/app/Models/User.php',
     'App\\Providers\\AppServiceProvider' => $baseDir . '/app/Providers/AppServiceProvider.php',
     'Attribute' => $vendorDir . '/symfony/polyfill-php80/Resources/stubs/Attribute.php',

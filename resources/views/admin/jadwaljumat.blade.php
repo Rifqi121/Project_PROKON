@@ -28,6 +28,22 @@
             </button>
         </div>
 
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
+
+        @if (session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
+
         <!-- Table -->
         <table class="tabel-data table table-responsive table-striped table-borderless table-hover"
             style="background-color: #374139;">
@@ -35,20 +51,51 @@
                 <tr>
                     <th>Tanggal</th>
                     <th>Khatib</th>
+                    <th>Muadzin</th>
                     <th>Aksi</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>1/1/2023</td>
-                    <td>Bapak Ustadz Adi Hidayat</td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#detailJumatanModal">Detail</button>
-                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal" data-bs-target="#editJumatanModal">Edit</button>
-                        <button class="btn btn-danger btn-sm">Hapus</button>
-                    </td>
-                </tr>
+                @foreach ($JumatSchedules as $JumatSchedule)
+                    <tr>
+                        <td>{{ $JumatSchedule->tanggal_jadwal_jumat }}</td>
+                        <td>{{ $JumatSchedule->khotib_jadwal_jumat }}</td>
+                        <td>{{ $JumatSchedule->muadzin_jadwal_jumat }}</td>
+                        <td>
+                            <div class="d-flex gap-1">
+                                <!-- Tombol Detail -->
+                                <button class="btn btn-primary btn-sm detail-jumat-btn" data-bs-toggle="modal"
+                                    data-bs-target="#detailJumatanModal" data-id="{{ $JumatSchedule->id }}"
+                                    data-tanggal="{{ $JumatSchedule->tanggal_jadwal_jumat }}"
+                                    data-khotib="{{ $JumatSchedule->khotib_jadwal_jumat }}"
+                                    data-muadzin="{{ $JumatSchedule->muadzin_jadwal_jumat }}">
+                                    Detail
+                                </button>
+
+                                <!-- Tombol Edit -->
+                                <button type="button" class="btn btn-warning btn-sm edit-jumat-btn" data-bs-toggle="modal"
+                                    data-bs-target="#editJumatanModal" data-id="{{ $JumatSchedule->id }}"
+                                    data-tanggal="{{ $JumatSchedule->tanggal_jadwal_jumat }}"
+                                    data-khotib="{{ $JumatSchedule->khotib_jadwal_jumat }}"
+                                    data-muadzin="{{ $JumatSchedule->muadzin_jadwal_jumat }}">
+                                    Edit
+                                </button>
+
+                                <!-- Tombol Hapus -->
+                                <form action="{{ route('JumatSchedules.delete', $JumatSchedule->id) }}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger btn-sm"
+                                        onclick="return confirm('Yakin ingin menghapus jadwal ini?')">
+                                        Hapus
+                                    </button>
+                                </form>
+                            </div>
+                        </td>
+                    </tr>
+                @endforeach
         </table>
+        {{ $JumatSchedules->links() }}
         <ul class="lap-page pagination justify-content-center py-3">
             <li class="page-item disabled">
                 <a class="page-link">Previous</a>
@@ -63,23 +110,31 @@
     </div>
 
     <!-- Modal Tambah Jumatan -->
-    <div class="modal fade" id="tambahJumatanModal" tabindex="-1" aria-labelledby="tambahJumatanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="tambahJumatanModal" tabindex="-1" aria-labelledby="tambahJumatanModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="tambahJumatanModalLabel">Tambah Jumatan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="POST">
+                <form action="{{ route('JumatSchedules.store') }}" method="POST">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
+                            <label for="tanggal_jadwal_jumat" class="form-label">Tanggal</label>
+                            <input type="date" class="form-control" id="tanggal_jadwal_jumat" name="tanggal_jadwal_jumat"
+                                required>
                         </div>
                         <div>
-                            <label for="khatib" class="form-label">Khatib</label>
-                            <input type="text" class="form-control" id="khatib" name="khatib" required>
+                            <label for="khotib_jadwal_jumat" class="form-label">Khatib</label>
+                            <input type="text" class="form-control" id="khotib_jadwal_jumat" name="khotib_jadwal_jumat"
+                                required>
+                        </div>
+                        <div>
+                            <label for="khotib_jadwal_jumat" class="form-label">Muadzin</label>
+                            <input type="text" class="form-control" id="muadzin_jadwal_jumat" name="muadzin_jadwal_jumat"
+                                required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -91,24 +146,69 @@
         </div>
     </div>
 
+    <!-- Modal Edit Jumat -->
+    <div class="modal fade" id="editJumatanModal" tabindex="-1" aria-labelledby="editJumatanModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <form action="#" method="POST" id="editJumatForm">
+                @csrf
+                @method('PUT')
+
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editJumatanModalLabel">Edit Jadwal Jumatan</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <input type="hidden" id="hidden_tanggal_jumat" name="tanggal_jadwal_jumat" />
+
+                        <div class="mb-3">
+                            <label for="edit_tanggal_jumat">Tanggal</label>
+                            <input type="date" id="edit_tanggal_jumat" class="form-control" disabled>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_khotib_jumat">Khotib</label>
+                            <input type="text" id="edit_khotib_jumat" name="khotib_jadwal_jumat" class="form-control"
+                                required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="edit_muadzin_jumat">Muadzin</label>
+                            <input type="text" id="edit_muadzin_jumat" name="muadzin_jadwal_jumat"
+                                class="form-control" required>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save Changes</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+
     <!-- Modal Detail Jumatan -->
-    <div class="modal fade" id="detailJumatanModal" tabindex="-1" aria-labelledby="detailJumatanModalLabel" aria-hidden="true">
+    <div class="modal fade" id="detailJumatanModal" tabindex="-1" aria-labelledby="detailJumatanModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailJumatanModalLabel">Jumatan</h5>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
-                <form action="#" method="GET">
+                <form action="#" method="GET" id="detailJumatForm">
                     @csrf
                     <div class="modal-body">
                         <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" readonly>
+                            <label for="detail_tanggal_jumat">Tanggal</label>
+                            <input type="date" id="detail_tanggal_jumat" class="form-control" readonly>
                         </div>
                         <div class="mb-3">
-                            <label for="khatib" class="form-label">Khatib</label>
-                            <input type="text" class="form-control" id="khatib" name="khatib" readonly>
+                            <label for="detail_khotib_jumat">Khotib</label>
+                            <input type="text" id="detail_khotib_jumat" class="form-control" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label for="detail_muadzin_jumat">Muadzin</label>
+                            <input type="text" id="detail_muadzin_jumat" class="form-control" readonly>
                         </div>
                     </div>
                 </form>
@@ -116,33 +216,57 @@
         </div>
     </div>
 
-    <!-- Modal Edit Jumatan -->
-    <div class="modal fade" id="editJumatanModal" tabindex="-1" aria-labelledby="editJumatanModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="editJumatanModalLabel">Edit Jumatan</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <form action="#" method="POST">
-                    @csrf
-                    <div class="modal-body">
-                        <div class="mb-3">
-                            <label for="tanggal" class="form-label">Tanggal</label>
-                            <input type="date" class="form-control" id="tanggal" name="tanggal" required>
-                        </div>
-                        <div class="mb-3">
-                            <label for="khatib" class="form-label">Khatib</label>
-                            <input type="text" class="form-control" id="khatib" name="khatib" required>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
-                        <button type="submit" class="btn btn-primary">Simpan</button>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const editButtons = document.querySelectorAll('.edit-jumat-btn');
+            const detailButtons = document.querySelectorAll('.detail-jumat-btn');
+
+            // Modifikasi form dan input untuk modal edit
+            const editModalForm = document.getElementById("editJumatForm");
+            const inputDateEdit = document.getElementById("edit_tanggal_jumat");
+            const hiddenDateInput = document.getElementById("hidden_tanggal_jumat");
+            const inputKhotibEdit = document.getElementById("edit_khotib_jumat");
+            const inputMuadzinEdit = document.getElementById("edit_muadzin_jumat");
+
+            // Modifikasi input untuk modal detail (tanpa form)
+            const inputDateDetail = document.getElementById("detail_tanggal_jumat");
+            const inputKhotibDetail = document.getElementById("detail_khotib_jumat");
+            const inputMuadzinDetail = document.getElementById("detail_muadzin_jumat");
+
+            // Event listener untuk tombol Edit
+            editButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const jumatId = button.getAttribute("data-id");
+                    const jumatDate = button.getAttribute("data-tanggal");
+                    const jumatKhotib = button.getAttribute("data-khotib");
+                    const jumatMuadzin = button.getAttribute("data-muadzin");
+
+                    // Update form action URL untuk modal edit
+                    editModalForm.action = `/admin/DataKegiatan/JadwalJumat/${jumatId}`;
+
+                    // Update input field untuk modal edit
+                    inputDateEdit.value = jumatDate;
+                    hiddenDateInput.value = jumatDate;
+                    inputKhotibEdit.value = jumatKhotib;
+                    inputMuadzinEdit.value = jumatMuadzin;
+                });
+            });
+
+            // Event listener untuk tombol Detail
+            detailButtons.forEach(button => {
+                button.addEventListener("click", function() {
+                    const jumatDate = button.getAttribute("data-tanggal");
+                    const jumatKhotib = button.getAttribute("data-khotib");
+                    const jumatMuadzin = button.getAttribute("data-muadzin");
+
+                    // Update input field untuk modal detail
+                    inputDateDetail.value = jumatDate;
+                    inputKhotibDetail.value = jumatKhotib;
+                    inputMuadzinDetail.value = jumatMuadzin;
+                });
+            });
+        });
+    </script>
+
 
 @endsection

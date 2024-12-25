@@ -14,12 +14,15 @@
             </div>
 
             <!-- Search -->
-            <div class="input-group input-group-sm" style="width: 80%;">
-                <span class="input-group-text">
-                    <i class="bi bi-search" style="color: #ccc;"></i>
-                </span>
-                <input type="text" class="form-control" placeholder="cari...">
-            </div>
+            <form action="{{ route('adminLayanan') }}" method="GET" style="width: 100%;">
+                <div class="input-group input-group-sm" style="width: 80%;">
+                    <span class="input-group-text">
+                        <i class="bi bi-search" style="color: #ccc;"></i>
+                    </span>
+                    <input type="text" class="form-control" placeholder="cari..." name="search"
+                        value="{{ $keyword ?? '' }}">
+                </div>
+            </form>
         </div>
 
         <div>
@@ -88,6 +91,7 @@
                 @endforeach
 
         </table>
+        {{ $services->links() }}
         <ul class="lap-page pagination justify-content-center py-3">
             <li class="page-item disabled">
                 <a class="page-link">Previous</a>

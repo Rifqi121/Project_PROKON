@@ -13,7 +13,7 @@ class ServiceController extends Controller
 
         $services = Service::when($keyword, function ($query, $keyword) {
             $query->where('layanan_name', 'LIKE', "%{$keyword}%");
-        })->paginate(8);
+        })->paginate(5);
 
         $services->appends(['search' => $keyword]);
 
@@ -36,7 +36,6 @@ class ServiceController extends Controller
 
     public function update(Request $request, Service $service)
     {
-        
         $request->validate([
             'layanan_name' => 'required|string|max:255',
         ]);

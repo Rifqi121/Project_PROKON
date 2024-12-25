@@ -11,10 +11,12 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('service', function (Blueprint $table) {
+        Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
-            $table->string('layanan_name');
-            $table->timestamps(); 
+            $table->string('judul_pengumuman');
+            $table->text('desc_pengumuman');
+            $table->date('tgl_pengumuman');
+            $table->timestamps();
         });
     }
 
@@ -23,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('service');
+        Schema::dropIfExists('pengumuman');
     }
 };
