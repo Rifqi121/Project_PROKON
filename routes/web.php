@@ -11,7 +11,13 @@ Route::get('/kegiatan', [HomeController::class, 'kegiatan'])->name('kegiatan');
 Route::get('/shodaqoh', [HomeController::class, 'shodaqoh'])->name('shodaqoh');
 Route::get('/laporan', [HomeController::class, 'laporan'])->name('laporan');
 Route::get('/jadwalsholat', [HomeController::class, 'jadwalsholat'])->name('jadwalsholat');
+Route::get('/layanan', [HomeController::class, 'layanan'])->name('layanan');
+Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('pengumuman');
+Route::get('/agenda', [HomeController::class, 'agenda'])->name('agenda');
+Route::get('/jadwaljumat', [HomeController::class, 'jadwaljumat'])->name('jadwaljumat');
+Route::get('/jadwalkajian', [HomeController::class, 'jadwalkajian'])->name('jadwalkajian');
 
+Route::get('/login', [AdminController::class, 'auth'])->name('admin');
 Route::get('/admin', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin');
 Route::get('/admin/layanan', [AdminController::class, 'layanan'])->name('adminLayanan');
