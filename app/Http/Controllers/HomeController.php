@@ -27,5 +27,24 @@ class HomeController extends Controller
     {
         return view('jadwalsholat');
     }
-
+    public function layanan()
+    {
+        return view('layanan');
+    }
+    public function pengumuman()
+    {
+        return view('pengumuman');
+    }
+    public function agenda()
+    {
+        return view('agenda');
+    }
+    public function jadwaljumat()
+    {
+        return view('jadwaljumat');
+    }
+    public function jadwalkajian()
+    {
+        return view('jadwalkajian');
+    }
 }

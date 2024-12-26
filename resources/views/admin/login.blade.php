@@ -13,11 +13,51 @@
     <link href="https://fonts.googleapis.com/css2?family=Jost:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #2A332E;
+            color: #FBFADA;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-container {
+            max-width: 400px;
+            margin: 50px auto;
+            background-color: #1E2623;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .form-control {
+            background-color: #2A332E;
+            color: #FBFADA;
+            border: 1px solid #FBFADA;
+        }
+
+        .form-control:focus {
+            background-color: #2A332E;
+            color: #FBFADA;
+            border-color: #FBFADA;
+            box-shadow: none;
+        }
+
+        .btn-login {
+            background-color: #FBFADA;
+            color: #2A332E;
+            border: none;
+        }
+
+        .btn-login:hover {
+            background-color: #E4D8A5;
+            color: #2A332E;
+        }
+    </style>
 </head>
 
 <body>
-
-
     <div class="container mt-4">
         @if ($errors->any())
             <div class="alert alert-danger mt-3">
@@ -28,19 +68,20 @@
                 </ul>
             </div>
         @endif
+    </div>
+
+    <div class="login-container text-center">
+        <h3 class="mb-4">Admin Login</h3>
         <form action="{{ route('login.post') }}" method="POST">
             @csrf
             <div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">Email address</label>
-                <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
-                    name="username" value="{{ old('username') }}">
-                <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+                <input type="text" class="form-control" name="username" value="{{ old('username') }}"
+                    placeholder="Username" required>
             </div>
             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" name="password">
+                <input type="password" class="form-control" name="password" placeholder="Password" required>
             </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+            <button type="submit" class="btn btn-login w-100">Login</button>
         </form>
     </div>
 
