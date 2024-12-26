@@ -23,7 +23,7 @@
             <img src="{{ asset('image/logo.svg') }}" alt="logo" style="width: 15px; height: 15px;">
             <span style="font-size: 15px;">Al-Ukhuwwah</span>
         </div>
-        <span class="d-none d-md-block" style="font-size: 15px;">Bandung | 08:02</span>
+        <span id="current-time" class="d-none d-md-block" style="font-size: 15px;">Bandung | 08:02</span>
         <button id="sidebarToggle" class="btn d-md-none border border-dark" data-bs-toggle="offcanvas"
             data-bs-target="#sidebar" aria-controls="sidebar">
             <i class="bi bi-list"></i>
@@ -49,66 +49,67 @@
             <div class="card flex-fill" style="background-color: #2A332E;">
                 <div class="card-body d-flex flex-column gap-5 mx-3">
                     <div>
-                        <h5 class="card-title pb-2" style="color: #FBFADA">21 Oktober 2024</h5>
-                        <h6 class="card-title pb-2" style="color: #FBFADA">18 Rabiul Akhir</h6>
+                        <?php
+                        use Illuminate\Support\Facades\Http;
+                        
+                        $tanggal = now()->format('Y-m-d'); // Tanggal hari ini
+                        $hijriDate = '';
+                        $gregorianDate = now()->locale('id')->isoFormat('D MMMM YYYY'); // Format tanggal Gregorian
+                        
+                        try {
+                            $apiUrlHijri = "https://api.myquran.com/v2/cal/hijr/{$tanggal}/-1";
+                            $responseHijri = Http::get($apiUrlHijri);
+                            $hijriData = $responseHijri->json('data.date') ?? [];
+                            $hijriDate = $hijriData[1] ?? 'Tanggal Hijriyah tidak tersedia'; // Data Hijriyah
+                        } catch (\Exception $e) {
+                            $hijriDate = 'Tanggal Hijriyah tidak tersedia';
+                        }
+                        ?>
+
+                        <h5 class="card-title pb-2" style="color: #FBFADA" id="gregorian-date">
+                            <?= $gregorianDate ?>
+                        </h5>
+                        <h6 class="card-title pb-2" style="color: #FBFADA" id="hijri-date">
+                            <?= $hijriDate ?>
+                        </h6>
                     </div>
+
                     <?php
-                    use Illuminate\Support\Facades\Http;
-                    
                     $kota = '1201'; // Ganti dengan nama kota
-                    $tanggal = now()->format('Y-m-d'); // Tanggal hari ini
-                    $apiUrl = "https://api.myquran.com/v2/sholat/jadwal/{$kota}/{$tanggal}";
+                    $apiUrlSholat = "https://api.myquran.com/v2/sholat/jadwal/{$kota}/{$tanggal}";
+                    $jadwalSholat = [];
                     
                     try {
-                        $response = Http::get($apiUrl);
-                        $jadwalSholat = $response->json('data.jadwal') ?? [];
+                        $responseSholat = Http::get($apiUrlSholat);
+                        $jadwalSholat = $responseSholat->json('data.jadwal') ?? [];
                     } catch (\Exception $e) {
                         $jadwalSholat = [];
                     }
                     ?>
+
                     @if (!empty($jadwalSholat))
                         <div class="d-flex flex-column gap-3">
                             <h6 style="color: #FBFADA">Jadwal Sholat Hari Ini</h6>
                             <div class="d-flex justify-content-between" style="color: #FBFADA">
                                 <div class="d-flex flex-column text-center">
-                                    <p>
-                                        Subuh
-                                    </p>
-                                    <p>
-                                        {{ $jadwalSholat['subuh'] }}
-                                    </p>
+                                    <p>Subuh</p>
+                                    <p>{{ $jadwalSholat['subuh'] }}</p>
                                 </div>
                                 <div class="d-flex flex-column text-center">
-                                    <p>
-                                        Dzuhur
-                                    </p>
-                                    <p>
-                                        {{ $jadwalSholat['dzuhur'] }}
-                                    </p>
+                                    <p>Dzuhur</p>
+                                    <p>{{ $jadwalSholat['dzuhur'] }}</p>
                                 </div>
                                 <div class="d-flex flex-column text-center">
-                                    <p>
-                                        Ashar
-                                    </p>
-                                    <p>
-                                        {{ $jadwalSholat['ashar'] }}
-                                    </p>
+                                    <p>Ashar</p>
+                                    <p>{{ $jadwalSholat['ashar'] }}</p>
                                 </div>
                                 <div class="d-flex flex-column text-center">
-                                    <p>
-                                        Maghrib
-                                    </p>
-                                    <p>
-                                        {{ $jadwalSholat['maghrib'] }}
-                                    </p>
+                                    <p>Maghrib</p>
+                                    <p>{{ $jadwalSholat['maghrib'] }}</p>
                                 </div>
                                 <div class="d-flex flex-column text-center">
-                                    <p>
-                                        Isya
-                                    </p>
-                                    <p>
-                                        {{ $jadwalSholat['isya'] }}
-                                    </p>
+                                    <p>Isya</p>
+                                    <p>{{ $jadwalSholat['isya'] }}</p>
                                 </div>
                             </div>
                         </div>
@@ -117,6 +118,7 @@
                     @endif
                 </div>
             </div>
+
         </div>
     </main>
 
@@ -141,7 +143,7 @@
                 @endunless
             </div>
         </a>
-        <a href="{{ route('laporan') }}" class="nav-btn {{ Route::is('laporan') ? 'active' : '' }}">
+        <a href="{{ route('user.laporan') }}" class="nav-btn {{ Route::is('user.laporan') ? 'active' : '' }}">
             <div>
                 <i class="bi bi-journal-text"></i>
                 @unless (Route::is('laporan'))
@@ -190,7 +192,8 @@
                     class="nav-link {{ Route::is('kegiatan', 'pengumuman', 'agenda', 'jadwaljumat', 'jadwalkajian') ? 'fw-bold' : '' }}">
                     <i class="bi bi-calendar-event-fill"></i> Kegiatan
                 </a>
-                <a href="{{ route('laporan') }}" class="nav-link {{ Route::is('laporan') ? 'fw-bold' : '' }}">
+                <a href="{{ route('user.laporan') }}"
+                    class="nav-link {{ Route::is('user.laporan') ? 'fw-bold' : '' }}">
                     <i class="bi bi-journal-text"></i> Laporan
                 </a>
                 <a href="{{ route('shodaqoh') }}" class="nav-link {{ Route::is('shodaqoh') ? 'fw-bold' : '' }}">
@@ -267,6 +270,58 @@
         // Call the function to create the calendar
         createCalendar("calendar");
     </script>
+    <script>
+        async function getDates() {
+            const gregorianDate = new Date(); // Mendapatkan tanggal Gregorian saat ini
+            const gregorianDateFormatted =
+                `${gregorianDate.getDate()} ${gregorianDate.toLocaleString('default', { month: 'long' })} ${gregorianDate.getFullYear()}`;
+
+            // Mengambil tanggal Hijriyah dari API MyQuran
+            const apiUrl = 'https://api.myquran.com/v2/cal/hijr/?adj=-1';
+            try {
+                const response = await fetch(apiUrl);
+                const data = await response.json();
+                if (data.status === "success") {
+                    // Ambil hasil tanggal Hijriyah
+                    const hijriDate = data.data.hijri;
+
+                    // Menampilkan tanggal Gregorian dan Hijriyah di elemen HTML
+                    document.getElementById('gregorian-date').textContent = gregorianDateFormatted;
+                    document.getElementById('hijri-date').textContent =
+                        `${hijriDate.day} ${hijriDate.month} ${hijriDate.year}`;
+                } else {
+                    console.error('Error fetching Hijri date from MyQuran API');
+                }
+            } catch (error) {
+                console.error('API Error:', error);
+            }
+        }
+
+        // Memanggil fungsi saat halaman dimuat
+        window.onload = getDates;
+    </script>
+
+    <script>
+        function updateTime() {
+            const timeElement = document.getElementById("current-time");
+            const now = new Date();
+            const options = {
+                timeZone: "Asia/Jakarta",
+                hour: "2-digit",
+                minute: "2-digit"
+            };
+            const formattedTime = new Intl.DateTimeFormat("id-ID", options).format(now);
+
+            timeElement.textContent = `Bandung | ${formattedTime}`;
+        }
+
+        // Initial call
+        updateTime();
+
+        // Update every second
+        setInterval(updateTime, 1000);
+    </script>
+
 </body>
 
 </html>

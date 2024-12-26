@@ -1,7 +1,7 @@
 body {
-    background-color: #1B2421;
+    background-color: #1b2421;
     font-family: "Jost", sans-serif;
-    color: #FBFADA;
+    color: #fbfada;
     height: 100vh;
     width: 100vh;
     overflow: hidden;
@@ -18,28 +18,28 @@ p {
 }
 
 .layanan {
-    background-color: #2A332E;
+    background-color: #2a332e;
     border: 1px solid;
-    border-color: #FBFADA;
-    color: #FBFADA;
+    border-color: #fbfada;
+    color: #fbfada;
 }
 
 .fasilitas {
-    background-color: #2A332E;
+    background-color: #2a332e;
     border: 1px solid;
-    border-color: #FBFADA;
-    color: #FBFADA;
+    border-color: #fbfada;
+    color: #fbfada;
 }
 
 .nav-btn {
     text-decoration: none;
     flex-grow: 1;
-    color: #FBFADA;
+    color: #fbfada;
     display: block;
 }
 
 .nav-btn div {
-    background-color: #2A332E;
+    background-color: #2a332e;
     text-align: center;
     padding: 1rem;
     border-radius: 0.5rem;
@@ -47,13 +47,13 @@ p {
 }
 
 .nav-btn:hover div {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
 }
 
 .nav-btn.active div {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
     font-weight: bold;
     padding-left: 0;
     padding-right: 0;
@@ -63,40 +63,40 @@ p {
     --bs-table-striped-bg: #444e45;
 }
 
-.laporan>tbody>tr>td {
+.laporan > tbody > tr > td {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
-.laporan>thead>tr>th {
+.laporan > thead > tr > th {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
 .lap-page .page-link {
     background-color: var(--pagination-bg, #374139);
-    color: var(--pagination-color, #FBFADA);
+    color: var(--pagination-color, #fbfada);
     border-color: var(--pagination-bg, #374139);
     transition: background-color 0.3s, color 0.3s;
 }
 
 .lap-page .page-link:hover {
     background-color: darken(var(--pagination-bg, #374139), 10%);
-    color: var(--pagination-color-hover, #FFFFFF);
+    color: var(--pagination-color-hover, #ffffff);
 }
 
 .lap-page .page-item.active .page-link {
     background-color: var(--pagination-active-bg, #adbc9f);
-    color: var(--pagination-active-color, #FFFFFF);
+    color: var(--pagination-active-color, #ffffff);
     border-color: var(--pagination-active-bg, #adbc9f);
     font-weight: bold;
     border-radius: 15%;
 }
 
 .lap-page .page-item.active .page-link:hover {
-    background-color: var(--pagination-active-bg, #FBFADA);
+    background-color: var(--pagination-active-bg, #fbfada);
     color: var(--pagination-active-color, #000000);
 }
 
@@ -106,13 +106,13 @@ table.laporan th {
 }
 
 #entries-select {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     color: #374139;
     border: none;
 }
 
 .input-group .form-control {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     color: #374139;
     border: none;
 }
@@ -122,25 +122,25 @@ table.laporan th {
 }
 
 .input-group .input-group-text {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     color: #374139;
     border: none;
 }
 
 /* Sidebar Styling */
 .offcanvas {
-    background-color: #2A332E;
+    background-color: #2a332e;
     max-width: 60vw;
 }
 
 .offcanvas-title {
     font-size: 1.2rem;
     font-weight: bold;
-    color: #FBFADA;
+    color: #fbfada;
 }
 
 .nav-link {
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 14px;
     padding: 0.75rem 1rem;
     border-radius: 0.25rem;
@@ -153,12 +153,12 @@ table.laporan th {
 
 .nav-link:hover {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
 }
 
 .nav-link.fw-bold {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
 }
 
 .scrollable-layanan::-webkit-scrollbar {
@@ -167,12 +167,12 @@ table.laporan th {
 }
 
 .scrollable-layanan::-webkit-scrollbar-thumb {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     border-radius: 4px;
 }
 
 .scrollable-layanan::-webkit-scrollbar-track {
-    background-color: #2A332E;
+    background-color: #2a332e;
 }
 
 .list-custom {
@@ -181,27 +181,25 @@ table.laporan th {
 }
 
 .list-custom .list-group-item {
-    background-color: #2A332E;
-    color: #FBFADA;
-    border-color: #FBFADA;
-
+    background-color: #2a332e;
+    color: #fbfada;
+    border-color: #fbfada;
 }
 
 .list-custom .list-group-item:hover {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
 }
 
-
 .hover-effect {
-    background-color: #2A332E;
-    color: #FBFADA;
+    background-color: #2a332e;
+    color: #fbfada;
     transition: background-color 0.3s, color 0.3s;
 }
 
 .hover-effect:hover {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
 }
 
 .informasi-masjid table {
@@ -210,15 +208,15 @@ table.laporan th {
     --bs-table-striped-bg: #444e45;
 }
 
-.informasi-masjid>table>tbody>tr>td {
+.informasi-masjid > table > tbody > tr > td {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
-.informasi-masjid>table>thead>tr>th {
+.informasi-masjid > table > thead > tr > th {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
@@ -228,14 +226,14 @@ table.laporan th {
 }
 
 .btn-shodaqoh {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     color: #374139;
     border: none;
 }
 
 .btn-shodaqoh:hover {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
 }
 
 .kegiatan {
@@ -243,60 +241,62 @@ table.laporan th {
     --bs-table-striped-bg: #444e45;
 }
 
-.kegiatan>tbody>tr>td {
+.kegiatan > tbody > tr > td {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
-.kegiatan>thead>tr>th {
+.kegiatan > thead > tr > th {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
     font-size: 10pt;
 }
 
 .btn-kegiatan {
-    background-color: #FBFADA;
+    background-color: #fbfada;
     color: #374139;
     border: none;
 }
 
 .btn-kegiatan:hover {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
 }
 
 .modal-content {
-    background-color: #2A332E;
-    color: #FBFADA;
+    background-color: #2a332e;
+    color: #fbfada;
 }
 
 .accordion-button {
-    background-color: #2A332E;
-    color: #FBFADA;
+    background-color: #2a332e;
+    color: #fbfada;
     border: none;
 }
 
 .accordion-button:not(.collapsed) {
-    background-color: #FBFADA;
-    color: #2A332E;
+    background-color: #fbfada;
+    color: #2a332e;
     font-weight: bold;
 }
 
 .accordion-button:hover {
     background-color: #374139;
-    color: #FBFADA;
+    color: #fbfada;
 }
 
 .accordion-body {
     background-color: #374139;
-    color: #FBFADA;
-    border-top: 1px solid #FBFADA;
+    color: #fbfada;
+    border-top: 1px solid #fbfada;
 }
 
+.darken-image {
+    filter: brightness(50%); /* Mengurangi kecerahan menjadi 50% */
+}
 
 @media (max-width: 767.98px) {
-
     /* Untuk layar lebih kecil dari sm */
     .custom-height {
         height: 60%;
@@ -322,18 +322,17 @@ table.laporan th {
     }
 
     .scrollable-fasilitas::-webkit-scrollbar-thumb {
-        background-color: #FBFADA;
+        background-color: #fbfada;
         border-radius: 4px;
     }
 
     .scrollable-fasilitas::-webkit-scrollbar-track {
-        background-color: #2A332E;
+        background-color: #2a332e;
     }
 
     .scrollable-layanan {
         max-height: 13vh;
         overflow-y: auto;
-
     }
 
     .scrollable-kegiatan {
@@ -347,12 +346,12 @@ table.laporan th {
     }
 
     .scrollable-kegiatan::-webkit-scrollbar-thumb {
-        background-color: #FBFADA;
+        background-color: #fbfada;
         border-radius: 4px;
     }
 
     .scrollable-kegiatan::-webkit-scrollbar-track {
-        background-color: #2A332E;
+        background-color: #2a332e;
     }
 
     .scrollable-shodaqoh {
@@ -368,7 +367,7 @@ table.laporan th {
     }
 
     .scrollable-shodaqoh::-webkit-scrollbar-thumb {
-        background-color: #FBFADA;
+        background-color: #fbfada;
     }
 
     .scrollable-tabel {
@@ -377,7 +376,7 @@ table.laporan th {
     }
 
     .scrollable-tabel::-webkit-scrollbar-thumb {
-        background-color: #FBFADA;
+        background-color: #fbfada;
     }
 
     .scrollable-tabel::-webkit-scrollbar {
@@ -389,14 +388,13 @@ table.laporan th {
         overflow-y: scroll;
     }
 
-    .kegiatan>tbody>tr>td {
+    .kegiatan > tbody > tr > td {
         font-size: 13pt;
     }
 
-    .kegiatan>thead>tr>th {
+    .kegiatan > thead > tr > th {
         font-size: 13pt;
     }
-
 }
 
 @media (min-width: 768px) {
@@ -418,6 +416,4 @@ table.laporan th {
         max-height: 45vh;
         overflow-y: scroll;
     }
-
-
 }

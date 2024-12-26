@@ -35,45 +35,19 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>1/1/2023</td>
-                                <td>Rp. 100.000</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>1/1/2023</td>
-                                <td>Rp. 100.000</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>1/1/2023</td>
-                                <td>Rp. 100.000</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
-                            <tr>
-                                <td>Infaq Sholat Jumat</td>
-                                <td>1/1/2023</td>
-                                <td>Rp. 100.000</td>
-                                <td>Infaq Jumat</td>
-                            </tr>
+                            @foreach ($reports as $report)
+                                <tr>
+                                    <td>{{ $report->judul_laporan }}</td>
+                                    <td>{{ $report->tanggal_laporan }}</td>
+                                    <td>{{ $report->jumlah_laporan }}</td>
+                                    <td>{{ $report->jenis_laporan }}</td>
+                                </tr>
+                            @endforeach
                     </table>
-                    <ul class="lap-page pagination justify-content-center py-1">
-                        <li class="page-item disabled">
-                            <a class="page-link">Previous</a>
-                        </li>
-                        <li class="page-item active"><a class="page-link" href="#">1</a></li>
-                        <li class="page-item"><a class="page-link" href="#">2</a></li>
-                        <li class="page-item"><a class="page-link" href="#">3</a></li>
-                        <li class="page-item">
-                            <a class="page-link" href="#">Next</a>
-                        </li>
-                    </ul>
                 </div>
 
             </div>
+            {{ $reports->links() }}
         </div>
     </div>
 @endsection

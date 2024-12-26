@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Report;
 
 class HomeController extends Controller
 {
@@ -19,9 +20,17 @@ class HomeController extends Controller
     {
         return view('shodaqoh');
     }
-    public function laporan()
+    public function laporan(Request $request)
     {
-        return view('laporan');
+        $keyword = $request->input('search');
+
+        $reports = Report::when($keyword, function ($query, $keyword) {
+            $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
+        })->paginate(2);
+
+        $reports->appends(['search' => $keyword]);
+
+        return view('laporan', compact('reports', 'keyword'));
     }
     public function jadwalsholat()
     {
