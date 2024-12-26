@@ -10,6 +10,10 @@ class AdminController extends Controller
     {
         return view('admin.dashboard'); 
     }
+    public function auth()
+    {
+        return view('admin.login'); 
+    }
     public function layanan()
     {
         return view('admin.layanan');

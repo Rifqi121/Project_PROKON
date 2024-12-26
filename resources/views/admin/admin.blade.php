@@ -46,38 +46,62 @@
                             <i class="bi bi-calendar-event-fill"></i>
                             <span class="ms-2">Data Kegiatan</span>
                         </a>
-                        <ul class="collapse list-unstyled ms-4" style="position: static; display: none; padding-left: 0;">
+                        <ul class="collapse list-unstyled ms-4"
+                            style="position: static; display: none; padding-left: 0;">
                             <li class="nav-item mb-2">
-                                <a class="dropdown-item d-flex py-1 align-items-center" href="{{ route('adminPengumuman') }}">
+                                <a class="dropdown-item d-flex py-1 align-items-center"
+                                    href="{{ route('pengumuman') }}">
                                     <span class="ms-3">Pengumuman</span>
                                 </a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a class="dropdown-item d-flex py-1 align-items-center"
-                                    href="{{ route('adminJadwalKajian') }}">
+                                <a class="dropdown-item d-flex py-1 align-items-center" href="{{ route('kajian') }}">
                                     <span class="ms-3">Jadwal Kajian</span>
                                 </a>
                             </li>
                             <li class="nav-item mb-2">
                                 <a class="dropdown-item d-flex py-1 align-items-center"
-                                    href="{{ route('adminJadwalJumat') }}">
+                                    href="{{ route('JumatSchedules') }}">
                                     <span class="ms-3">Jadwal Jumat</span>
                                 </a>
                             </li>
                             <li class="nav-item mb-2">
-                                <a class="dropdown-item d-flex py-1 align-items-center" href="{{ route('adminAgenda') }}">
+                                <a class="dropdown-item d-flex py-1 align-items-center" href="{{ route('agenda') }}">
                                     <span class="ms-3">Agenda</span>
                                 </a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item mb-2">
-                        <a href="{{ route('adminLaporan') }}"
+                        <a href="{{ route('laporan') }}"
                             class="nav-link d-flex align-items-center {{ request()->routeIs('adminLaporan') ? 'active' : '' }}"
                             style="color: inherit; text-decoration: none;">
                             <i class="bi bi-journal-text"></i>
                             <span class="ms-2">Laporan Keuangan</span>
                         </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="{{ route('death') }}"
+                            class="nav-link d-flex align-items-center {{ request()->routeIs('death') ? 'active' : '' }}"
+                            style="color: inherit; text-decoration: none;">
+                            <i class="bi bi-journal-text"></i>
+                            <span class="ms-2">Laporan Kematian</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <a href="{{ route('inventaris') }}"
+                            class="nav-link d-flex align-items-center {{ request()->routeIs('inventaris') ? 'active' : '' }}"
+                            style="color: inherit; text-decoration: none;">
+                            <i class="bi bi-journal-text"></i>
+                            <span class="ms-2">Laporan Inventaris</span>
+                        </a>
+                    </li>
+                    <li class="nav-item mb-2">
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+
                     </li>
                 </ul>
             </nav>
@@ -92,13 +116,12 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        document.getElementById('dropdownKegiatan').addEventListener('click', function (e) {
+        document.getElementById('dropdownKegiatan').addEventListener('click', function(e) {
             e.preventDefault();
             const dropdownMenu = this.nextElementSibling;
             const isShown = dropdownMenu.style.display === 'block';
             dropdownMenu.style.display = isShown ? 'none' : 'block';
         });
-
     </script>
 </body>
 
