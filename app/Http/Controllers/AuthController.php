@@ -20,17 +20,42 @@ class AuthController extends Controller
             'username' => 'required',
             'password' => 'required|min:6',
         ]);
-    
+
         $user = User::where('username', $request->username)->first();
-    
+
         if (!$user) {
             return back()->withErrors(['username' => 'Username tidak ditemukan.'])->withInput();
         }
-    
-        if (!Auth::attempt($request->only('username', 'password'))) {
+
+        if (!Hash::check($request->password, $user->password)) {
             return back()->withErrors(['password' => 'Password salah.'])->withInput();
         }
-    
-        return redirect()->route('admin.dashboard')->with('success', 'Login successful as admin.');
+
+        Auth::login($user);
+
+        if ($user->role !== 'admin') {
+            Auth::logout();
+            return back()->withErrors(['message' => 'Anda tidak memiliki akses sebagai admin.'])->withInput();
+        }
+
+        if (Auth::check() && Auth::user()->role !== 'admin') {
+            return redirect('/login')->withErrors('Anda tidak memiliki akses ke halaman ini.');
+        }        
+
+        return redirect()->route('admin')->with('success', 'Login berhasil sebagai admin.');
     }
+
+    public function logout(Request $request)
+    {
+        Auth::logout(); // Log out user
+
+        // Hapus sesi dan token autentikasi
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        // Redirect ke halaman login atau halaman lain
+        return redirect()->route('login')->with('success', 'Logout berhasil.');
+    }
+
+
 }

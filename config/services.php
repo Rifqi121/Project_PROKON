@@ -35,4 +35,8 @@ return [
         ],
     ],
 
+    'myquran' => [
+    'base_url' => env('API_BASE_URL', 'https://api.myquran.com/v2'),
+    ],
+
 ];

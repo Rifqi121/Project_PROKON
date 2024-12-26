@@ -96,6 +96,13 @@
                             <span class="ms-2">Laporan Inventaris</span>
                         </a>
                     </li>
+                    <li class="nav-item mb-2">
+                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                            @csrf
+                            <button type="submit" class="btn btn-danger">Logout</button>
+                        </form>
+
+                    </li>
                 </ul>
             </nav>
 
