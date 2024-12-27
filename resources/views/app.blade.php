@@ -20,7 +20,7 @@
     <div class="rounded py-3 px-4 d-flex justify-content-between align-items-center"
         style="background-color: #2A332E; height: 8vh">
         <div class="d-flex flex-row align-items-center gap-2">
-            <img src="{{ asset('image/logo.svg') }}" alt="logo" style="width: 15px; height: 15px;">
+            <img src="{{ asset('image/UkhuwahLogo.png') }}" alt="logo" style="width: 32px; height: 32px;">
             <span style="font-size: 15px;">Al-Ukhuwwah</span>
         </div>
         <span id="current-time" class="d-none d-md-block" style="font-size: 15px;">Bandung | 08:02</span>
@@ -135,10 +135,10 @@
             </div>
         </a>
         <a href="{{ route('kegiatan') }}"
-            class="nav-btn {{ Route::is('kegiatan', 'pengumuman', 'agenda', 'jadwaljumat', 'jadwalkajian') ? 'active' : '' }}">
+            class="nav-btn {{ Route::is('kegiatan', 'pengumuman', 'user.agenda', 'jadwaljumat', 'jadwalkajian') ? 'active' : '' }}">
             <div>
                 <i class="bi bi-calendar-event-fill"></i>
-                @unless (Route::is('kegiatan', 'pengumuman', 'agenda', 'jadwaljumat', 'jadwalkajian'))
+                @unless (Route::is('kegiatan', 'pengumuman', 'user.agenda', 'jadwaljumat', 'jadwalkajian'))
                     Kegiatan
                 @endunless
             </div>
@@ -189,7 +189,7 @@
                     <i class="bi bi-house-fill"></i> Beranda
                 </a>
                 <a href="{{ route('kegiatan') }}"
-                    class="nav-link {{ Route::is('kegiatan', 'pengumuman', 'agenda', 'jadwaljumat', 'jadwalkajian') ? 'fw-bold' : '' }}">
+                    class="nav-link {{ Route::is('kegiatan', 'user.pengumuman', 'user.agenda', 'jadwaljumat', 'jadwalkajian') ? 'fw-bold' : '' }}">
                     <i class="bi bi-calendar-event-fill"></i> Kegiatan
                 </a>
                 <a href="{{ route('user.laporan') }}"

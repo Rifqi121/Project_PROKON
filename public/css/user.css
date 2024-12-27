@@ -293,21 +293,29 @@ table.laporan th {
 }
 
 .darken-image {
-    filter: brightness(50%); /* Mengurangi kecerahan menjadi 50% */
+    filter: brightness(70%); /* Mengurangi kecerahan menjadi 50% */
 }
 
 @media (max-width: 767.98px) {
     /* Untuk layar lebih kecil dari sm */
+    body {
+        overflow-y: scroll;
+        overflow-x: hidden;
+    }
+
     .custom-height {
         height: 60%;
     }
 
     .main-content {
-        height: 85vh;
+        height: 100vh;
     }
 
     .card-content {
-        height: 40%;
+        display: flex;
+        margin-top: 4px;
+        flex-direction: column-reverse !important;
+        height: 100%;
     }
 
     .scrollable-fasilitas {

@@ -12,7 +12,7 @@
                             style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
                             <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Pengumuman
                             </h5>
-                            <a href="{{ route('pengumuman') }}"
+                            <a href="{{ route('user.pengumuman') }}"
                                 style="font-size: 0.9rem; text-decoration: none; color: #FBFADA;">Klik
                                 Selengkapnya</a>
                         </div>
@@ -50,7 +50,7 @@
                         <div
                             style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1rem; background: rgba(0, 0, 0, 0.5);">
                             <h5 style="font-size: 1.2rem; font-weight: bold; margin: 0; color: #FBFADA;">Agenda</h5>
-                            <a href="{{ route('agenda') }}"
+                            <a href="{{ route('user.agenda') }}"
                                 style="font-size: 0.9rem; text-decoration: none; color: #FBFADA;">Klik
                                 Selengkapnya</a>
                         </div>

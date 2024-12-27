@@ -26,7 +26,7 @@ class HomeController extends Controller
 
         $reports = Report::when($keyword, function ($query, $keyword) {
             $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
-        })->paginate(2);
+        })->paginate(8);
 
         $reports->appends(['search' => $keyword]);
 
