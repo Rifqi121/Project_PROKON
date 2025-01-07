@@ -84,3 +84,6 @@ Route::get('/pengumuman', [HomeController::class, 'pengumuman'])->name('user.pen
 Route::get('/agenda', [HomeController::class, 'agenda'])->name('user.agenda');
 Route::get('/jadwaljumat', [HomeController::class, 'jadwaljumat'])->name('jadwaljumat');
 Route::get('/jadwalkajian', [HomeController::class, 'jadwalkajian'])->name('jadwalkajian');
+Route::get('/infaq-shodaqoh', [HomeController::class, 'infaqShodaqoh'])->name('infaq-shodaqoh');
+Route::get('/zakat', [HomeController::class, 'zakat'])->name('zakat');
+Route::get('/kematian', [HomeController::class, 'kematian'])->name('kematian');

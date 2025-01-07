@@ -200,7 +200,251 @@
                         </div>
                     </div>
                 </div>
+                <div class="carousel-item">
+                    <div class="d-flex flex-column text-start">
+                        <h3 style="color: #FBFADA;">Struktur Organisasi DKM</h3>
+                        <div class="row g-3">
+                            <div class="col-12 informasi-masjid">
+                                <table class="table table-borderless table-striped"
+                                    style="background-color: #2A332E; color: #FBFADA;">
+                                    <tbody>
+                                        <tr>
+                                            <td>Pelindung</td>
+                                            <td>: Ketua RW 14</td>
+                                        </tr>
+                                        <tr>
+                                            <td></td>
+                                            <td>: Ketua Yayasan</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Pembina</td>
+                                            <td>: Ust. H. Dedi Irawan</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Ketua Umum</td>
+                                            <td>: Dadar Supriatna, MM</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Wakil Ketua Umum</td>
+                                            <td>: H. Asep Permana, M.Pd.</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sekretaris 1</td>
+                                            <td>: Khaerudin</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Sekretaris 2</td>
+                                            <td>: Ahmad Fauzi</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bendahara 1</td>
+                                            <td>: Misyono</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Bendahara 2</td>
+                                            <td>: Joni Ibrahim</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
+                <div class="carousel-item">
+                    <div class="d-flex flex-column text-start">
+                        <h3 style="color: #FBFADA;">Struktur Organisasi DKM</h3>
+                        <div class="mt-2 row g-3">
+                            <div class="col-12 informasi-masjid">
+                                <!-- Button Collapse -->
+                                <div class="accordion" id="accordionDKM">
+                                    <div class="mb-3">
+                                        <button class="btn btn-collapse w-100 mb-2 py-3" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapsePendidikan"
+                                            aria-expanded="false" aria-controls="collapsePendidikan">
+                                            BIDANG PENDIDIKAN DAN PEMBERDAYAAN UMMAT
+                                        </button>
+                                        <div id="collapsePendidikan" class="accordion-collapse collapse informasi-masjid"
+                                            data-bs-parent="#accordionDKM">
+                                            <table class="table table-borderless table-striped"
+                                                style="background-color: #2A332E; color: #FBFADA;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Ketua</td>
+                                                        <td>: Ust. Gugi Sukmana, Lc</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Bidang Madrasah</td>
+                                                        <td>: Ust. Agus Nurjaman</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Puji Aristyanti</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Pembina Remaja Masjid</td>
+                                                        <td>: Ust. Ahmad Syaefudin, S.Hi.</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Ketua Ikatan Remaja Masjid</td>
+                                                        <td>: Moh. Rizki</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Bidang Humas dan IT</td>
+                                                        <td>: Emis Suherman</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Aldin</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Bidang Perpustakaan</td>
+                                                        <td>: Sugeng</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Bidang Pendidikan dan Pelatihan</td>
+                                                        <td>: Ust. Sunardi</td>
+                                                    </tr><tr>
+                                                        <td>Koord. Bidang Ziswaf</td>
+                                                        <td>: Adang Sutisna, MM.</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-collapse w-100 mb-2 py-3" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapsePeribadatan"
+                                            aria-expanded="false" aria-controls="collapsePeribadatan">
+                                            BIDANG PERIBADATAN DAN DAKWAH
+                                        </button>
+                                        <div id="collapsePeribadatan" class="accordion-collapse collapse informasi-masjid"
+                                            data-bs-parent="#accordionDKM">
+                                            <table class="table table-borderless table-striped"
+                                                style="background-color: #2A332E; color: #FBFADA;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Ketua</td>
+                                                        <td>: Ust. Engkus Kuswandi</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Imam dan Khatib Jumat</td>
+                                                        <td>: Ust. H. Dedi Irawan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Ust. Aminudin</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. PHBI dan Dakwah</td>
+                                                        <td>: Ust. Asep Gunawan, M.Pdi</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Majelis Taklim Ibu-Ibu</td>
+                                                        <td>: Ustadzah Euis Rosyanti</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Majelis Taklim Bapa-bapa</td>
+                                                        <td>: Ust. Engkus Kuswandi</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Imam Sholat Rawatib</td>
+                                                        <td>: Ust. Nurul Ikhsan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Pemulasaraan Jenazah</td>
+                                                        <td>: Ust. Syarif Hidayat</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3">
+                                        <button class="btn btn-collapse w-100 mb-2 py-3" type="button"
+                                            data-bs-toggle="collapse" data-bs-target="#collapseSarana"
+                                            aria-expanded="false" aria-controls="collapseSarana">
+                                            BIDANG SARANA DAN PRASARANA
+                                        </button>
+                                        <div id="collapseSarana" class="accordion-collapse collapse informasi-masjid"
+                                            data-bs-parent="#accordionDKM">
+                                            <table class="table table-borderless table-striped"
+                                                style="background-color: #2A332E; color: #FBFADA;">
+                                                <tbody>
+                                                    <tr>
+                                                        <td>Ketua</td>
+                                                        <td>: Misyono</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Pemeliharaan bangunan</td>
+                                                        <td>: Arif</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Jamidin</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Teknisi</td>
+                                                        <td>: Dadan Hadiana</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Toro</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Heri Angga</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Kebersihan dan Sanitasi</td>
+                                                        <td>: Budi Setiadi ( RT 03 )</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Lalan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Ade Marbot</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Mahfudin</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. Inventarisasi Barang</td>
+                                                        <td>: Uton Hikmat</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Budi ( RT 05 )</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Roni Bayu Aji</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Darmawan</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Koord. TPU dan Pemakaman</td>
+                                                        <td>: Emis Suherman</td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>: Dede Supriatna</td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
             </div>
         </div>

@@ -20,17 +20,9 @@ class HomeController extends Controller
     {
         return view('shodaqoh');
     }
-    public function laporan(Request $request)
+    public function laporan()
     {
-        $keyword = $request->input('search');
-
-        $reports = Report::when($keyword, function ($query, $keyword) {
-            $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
-        })->paginate(8);
-
-        $reports->appends(['search' => $keyword]);
-
-        return view('laporan', compact('reports', 'keyword'));
+        return view('laporan');
     }
     public function jadwalsholat()
     {
@@ -55,5 +47,24 @@ class HomeController extends Controller
     public function jadwalkajian()
     {
         return view('jadwalkajian');
+    }
+    public function infaqShodaqoh(Request $request)
+    {
+        $keyword = $request->input('search');
+
+        $reports = Report::when($keyword, function ($query, $keyword) {
+            $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
+        })->paginate(8);
+
+        $reports->appends(['search' => $keyword]);
+        return view('laporaninfaq', compact('reports', 'keyword'));
+    }
+    public function zakat()
+    {
+        return view('laporanzakat');
+    }
+    public function kematian()
+    {
+        return view('laporankematian');
     }
 }

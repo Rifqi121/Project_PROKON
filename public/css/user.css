@@ -2,7 +2,6 @@ body {
     background-color: #1b2421;
     font-family: "Jost", sans-serif;
     color: #fbfada;
-    height: 100vh;
     width: 100vh;
     overflow: hidden;
 }
@@ -296,6 +295,47 @@ table.laporan th {
     filter: brightness(70%); /* Mengurangi kecerahan menjadi 50% */
 }
 
+.scrollable-tabel {
+    max-height: 45vh;
+    overflow-y: scroll;
+}
+
+.scrollable-tabel::-webkit-scrollbar-thumb {
+    background-color: #fbfada;
+}
+
+.scrollable-tabel::-webkit-scrollbar {
+    width: 2px;
+}
+
+.btn-collapse {
+    background-color: transparent; 
+    border: 1px solid #FBFADA; 
+    color: #FBFADA;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.btn-collapse:hover {
+    background-color: #FBFADA; 
+    color: #2A332E;
+}
+
+.accordion-collapse.show .btn-collapse {
+    background-color: #FBFADA;
+    color: #2A332E; 
+    border-color: #FBFADA; 
+}
+
+.card-scroll::-webkit-scrollbar {
+    width: 2px;
+    height: 2px;
+}
+
+.card-scroll::-webkit-scrollbar-thumb {
+    background-color: #fbfada;
+}
+
 @media (max-width: 767.98px) {
     /* Untuk layar lebih kecil dari sm */
     body {
@@ -383,14 +423,6 @@ table.laporan th {
         overflow-y: scroll;
     }
 
-    .scrollable-tabel::-webkit-scrollbar-thumb {
-        background-color: #fbfada;
-    }
-
-    .scrollable-tabel::-webkit-scrollbar {
-        width: 2px;
-    }
-
     .informasi-masjid {
         max-height: 31vh;
         overflow-y: scroll;
@@ -403,9 +435,23 @@ table.laporan th {
     .kegiatan > thead > tr > th {
         font-size: 13pt;
     }
+    
+    .card-info{
+        max-height: 45vh;
+        overflow-y: scroll;
+    }
+
+    .card-jadwal{
+        max-height: 28vh;
+        overflow-y: scroll;
+    }
 }
 
 @media (min-width: 768px) {
+
+    body{
+        height: 100vh;
+    }
     .custom-height {
         height: 100%;
     }
@@ -422,6 +468,11 @@ table.laporan th {
 
     .informasi-masjid {
         max-height: 45vh;
+        overflow-y: scroll;
+    }
+
+    .card-info{
+        max-height: 28vh;
         overflow-y: scroll;
     }
 }

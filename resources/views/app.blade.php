@@ -14,6 +14,7 @@
         rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/user.css') }}">
     <link rel="stylesheet" href="{{ asset('css/calendar.css') }}">
+    <link rel="icon" href="{{ asset('image/UkhuwahLogo.png') }}">
 </head>
 
 <body class="container-fluid p-1">
@@ -38,87 +39,106 @@
 
         <!-- Card Kanan -->
         <div class="col-12 col-md-4 d-flex flex-row flex-md-column gap-1 card-content">
+            <!-- Card: Info Warga -->
             <div class="card flex-fill" style="background-color: #2A332E;">
                 <div class="card-body">
-                    <div class="datepicker">
-                        <div class="datepicker-calendar" id="calendar">
+                    <h5 class="card-title pb-3" style="color: #FBFADA;">Info Warga</h5>
+                    <div class="d-flex flex-column card-info card-scroll">
+                        <!-- Kegiatan Jumat Bersih -->
+                        <div class="info-item" data-bs-toggle="modal" data-bs-target="#infoJumatBersih"
+                            style="cursor: pointer;">
+                            <h6 style="color: #FBFADA;">Kegiatan Jumat Bersih</h6>
+                            <p style="color: #FBFADA; font-size: 0.8rem;">Warga diminta berkumpul di masjid pada pukul
+                                08.00 WIB untuk kegiatan kerja bakti bersama.</p>
                         </div>
+                        <hr style="border-color: #FBFADA;">
+                        <div class="info-item" data-bs-toggle="modal" data-bs-target="#infoJumatBersih"
+                            style="cursor: pointer;">
+                            <h6 style="color: #FBFADA;">Kegiatan Jumat Bersih</h6>
+                            <p style="color: #FBFADA; font-size: 0.8rem;">Warga diminta berkumpul di masjid pada pukul
+                                08.00 WIB untuk kegiatan kerja bakti bersama.</p>
+                        </div>
+                        <hr style="border-color: #FBFADA;">
+                        <div class="info-item" data-bs-toggle="modal" data-bs-target="#infoJumatBersih"
+                            style="cursor: pointer;">
+                            <h6 style="color: #FBFADA;">Kegiatan Jumat Bersih</h6>
+                            <p style="color: #FBFADA; font-size: 0.8rem;">Warga diminta berkumpul di masjid pada pukul
+                                08.00 WIB untuk kegiatan kerja bakti bersama.</p>
+                        </div>
+                        <hr style="border-color: #FBFADA;">
                     </div>
                 </div>
             </div>
+
+            <!-- Card: Scan QRIS dan Nomor Rekening -->
             <div class="card flex-fill" style="background-color: #2A332E;">
-                <div class="card-body d-flex flex-column gap-5 mx-3">
-                    <div>
-                        <?php
-                        use Illuminate\Support\Facades\Http;
-                        
-                        $tanggal = now()->format('Y-m-d'); // Tanggal hari ini
-                        $hijriDate = '';
-                        $gregorianDate = now()->locale('id')->isoFormat('D MMMM YYYY'); // Format tanggal Gregorian
-                        
-                        try {
-                            $apiUrlHijri = "https://api.myquran.com/v2/cal/hijr/{$tanggal}/-1";
-                            $responseHijri = Http::get($apiUrlHijri);
-                            $hijriData = $responseHijri->json('data.date') ?? [];
-                            $hijriDate = $hijriData[1] ?? 'Tanggal Hijriyah tidak tersedia'; // Data Hijriyah
-                        } catch (\Exception $e) {
-                            $hijriDate = 'Tanggal Hijriyah tidak tersedia';
-                        }
-                        ?>
-
-                        <h5 class="card-title pb-2" style="color: #FBFADA" id="gregorian-date">
-                            <?= $gregorianDate ?>
-                        </h5>
-                        <h6 class="card-title pb-2" style="color: #FBFADA" id="hijri-date">
-                            <?= $hijriDate ?>
-                        </h6>
-                    </div>
-
-                    <?php
-                    $kota = '1201'; // Ganti dengan nama kota
-                    $apiUrlSholat = "https://api.myquran.com/v2/sholat/jadwal/{$kota}/{$tanggal}";
-                    $jadwalSholat = [];
-                    
-                    try {
-                        $responseSholat = Http::get($apiUrlSholat);
-                        $jadwalSholat = $responseSholat->json('data.jadwal') ?? [];
-                    } catch (\Exception $e) {
-                        $jadwalSholat = [];
-                    }
-                    ?>
-
-                    @if (!empty($jadwalSholat))
-                        <div class="d-flex flex-column gap-3">
-                            <h6 style="color: #FBFADA">Jadwal Sholat Hari Ini</h6>
-                            <div class="d-flex justify-content-between" style="color: #FBFADA">
-                                <div class="d-flex flex-column text-center">
-                                    <p>Subuh</p>
-                                    <p>{{ $jadwalSholat['subuh'] }}</p>
-                                </div>
-                                <div class="d-flex flex-column text-center">
-                                    <p>Dzuhur</p>
-                                    <p>{{ $jadwalSholat['dzuhur'] }}</p>
-                                </div>
-                                <div class="d-flex flex-column text-center">
-                                    <p>Ashar</p>
-                                    <p>{{ $jadwalSholat['ashar'] }}</p>
-                                </div>
-                                <div class="d-flex flex-column text-center">
-                                    <p>Maghrib</p>
-                                    <p>{{ $jadwalSholat['maghrib'] }}</p>
-                                </div>
-                                <div class="d-flex flex-column text-center">
-                                    <p>Isya</p>
-                                    <p>{{ $jadwalSholat['isya'] }}</p>
-                                </div>
-                            </div>
+                <div class="card-body d-flex flex-column">
+                    <div class="d-flex flex-column flex-xxl-row justify-content-between align-items-center gap-3 card-info card-scroll">
+                        <!-- QRIS -->
+                        <div class="qris col-5 d-flex flex-column align-items-center">
+                            <h6 style="color: #FBFADA; text-align: center;">Scan QRIS untuk Infaq</h6>
+                            <img src="{{ asset('image/qris.png') }}" alt="QRIS Code"
+                                style="width: 150px; height: 180px; border: 1px solid #FBFADA; border-radius: 8px; cursor: pointer;"
+                                data-bs-toggle="modal" data-bs-target="#qrisModal">
                         </div>
-                    @else
-                        <p class="text-center">Jadwal tidak tersedia</p>
-                    @endif
+                        <!-- Rekening -->
+                        <div class="rekening col-6 d-flex flex-column align-items-center">
+                            <h6 style="color: #FBFADA; text-align: center;">Nomor Rekening Masjid</h6>
+                            <p style="color: #FBFADA; text-align: center; font-size: 10pt;">
+                                Bank Mandiri: <span class="fw-bold">13000 1646 5943</span> a.n DKM AL UKHUWWAH GBA BARAT
+                            </p>
+                            <p style="color: #FBFADA; text-align: center; font-size: 10pt;">
+                                Bank BJB: <span class="fw-bold">013 564 679 2100</span> a.n YAYASAN AL UKHUWWAH GBA
+                                BARAT
+                            </p>
+                        </div>
+                    </div>
                 </div>
             </div>
 
+        </div>
+
+        <!-- Modal Qris -->
+        <div class="modal fade" id="qrisModal" tabindex="-1" aria-labelledby="qrisModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="qrisModalLabel">QRIS untuk Infaq</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img src="{{ asset('image/qris.png') }}" alt="QRIS Code"
+                            style="width: 280px; height: 350px; border: 1px solid #FBFADA; border-radius: 8px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Modal Detail Info -->
+        <div class="modal fade" id="infoJumatBersih" tabindex="-1" aria-labelledby="infoJumatBersihLabel"
+            aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content" style="background-color: #2A332E; color: #FBFADA;">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="infoJumatBersihLabel">Kegiatan Jumat Bersih</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            style="background-color: #FBFADA;"></button>
+                    </div>
+                    <div class="modal-body">
+                        Warga diminta berkumpul di masjid pada pukul 08.00 WIB untuk kegiatan kerja bakti bersama. Harap
+                        membawa alat kebersihan seperti sapu, pengki, dan kain pel.
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn" data-bs-dismiss="modal"
+                            style="background-color: #FBFADA; color: #2A332E;">Tutup</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="d-flex d-md-none footer mt-1">
+            <div class="col text-center rounded p-2" style="background-color: #2A332E;">
+                <span>Copyright © Al-Ukhuwwah 2024</span>
+            </div>
         </div>
     </main>
 
@@ -130,7 +150,7 @@
             <div>
                 <i class="bi bi-house-fill"></i>
                 @unless (Route::is('home'))
-                    Beranda
+                Beranda
                 @endunless
             </div>
         </a>
@@ -139,15 +159,15 @@
             <div>
                 <i class="bi bi-calendar-event-fill"></i>
                 @unless (Route::is('kegiatan', 'pengumuman', 'user.agenda', 'jadwaljumat', 'jadwalkajian'))
-                    Kegiatan
+                Kegiatan
                 @endunless
             </div>
         </a>
         <a href="{{ route('user.laporan') }}" class="nav-btn {{ Route::is('user.laporan') ? 'active' : '' }}">
             <div>
                 <i class="bi bi-journal-text"></i>
-                @unless (Route::is('laporan'))
-                    Laporan
+                @unless (Route::is('user.laporan'))
+                Laporan
                 @endunless
             </div>
         </a>
@@ -155,7 +175,7 @@
             <div>
                 <i class="bi bi-cash"></i>
                 @unless (Route::is('shodaqoh'))
-                    Shodaqoh
+                Shodaqoh
                 @endunless
             </div>
         </a>
@@ -163,13 +183,13 @@
             <div>
                 <i class="bi bi-clock-fill"></i>
                 @unless (Route::is('jadwalsholat'))
-                    Jadwal Sholat
+                Jadwal Sholat
                 @endunless
             </div>
         </a>
     </div>
 
-    <div class="rounded mt-1 p-1" style="background-color: #2A332E;">
+    <div class="d-none d-md-flex footer rounded mt-md-1 mb-md-2 p-1" style="background-color: #2A332E;">
         <div class="col text-center">
             <span>Copyright © Al-Ukhuwwah 2024</span>
         </div>
@@ -192,15 +212,13 @@
                     class="nav-link {{ Route::is('kegiatan', 'user.pengumuman', 'user.agenda', 'jadwaljumat', 'jadwalkajian') ? 'fw-bold' : '' }}">
                     <i class="bi bi-calendar-event-fill"></i> Kegiatan
                 </a>
-                <a href="{{ route('user.laporan') }}"
-                    class="nav-link {{ Route::is('user.laporan') ? 'fw-bold' : '' }}">
+                <a href="{{ route('user.laporan') }}" class="nav-link {{ Route::is('user.laporan') ? 'fw-bold' : '' }}">
                     <i class="bi bi-journal-text"></i> Laporan
                 </a>
                 <a href="{{ route('shodaqoh') }}" class="nav-link {{ Route::is('shodaqoh') ? 'fw-bold' : '' }}">
                     <i class="bi bi-cash"></i> Shodaqoh
                 </a>
-                <a href="{{ route('jadwalsholat') }}"
-                    class="nav-link {{ Route::is('jadwalsholat') ? 'fw-bold' : '' }}">
+                <a href="{{ route('jadwalsholat') }}" class="nav-link {{ Route::is('jadwalsholat') ? 'fw-bold' : '' }}">
                     <i class="bi bi-clock-fill"></i> Jadwal Sholat
                 </a>
             </nav>
@@ -269,6 +287,7 @@
 
         // Call the function to create the calendar
         createCalendar("calendar");
+
     </script>
     <script>
         async function getDates() {
@@ -299,6 +318,7 @@
 
         // Memanggil fungsi saat halaman dimuat
         window.onload = getDates;
+
     </script>
 
     <script>
@@ -320,6 +340,7 @@
 
         // Update every second
         setInterval(updateTime, 1000);
+
     </script>
 
 </body>
