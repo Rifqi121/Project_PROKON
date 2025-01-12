@@ -9,17 +9,24 @@ class ReportController extends Controller
 {
     // Menampilkan semua laporan
     public function index(Request $request)
-    {
-        $keyword = $request->input('search');
+{
+    $keyword = $request->input('search');
 
-        $reports = Report::when($keyword, function ($query, $keyword) {
-            $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
-        })->paginate(5);
+    $reports = Report::when($keyword, function ($query, $keyword) {
+        $query->where('judul_laporan', 'LIKE', "%{$keyword}%");
+    })->paginate(5);
 
-        $reports->appends(['search' => $keyword]);
+    $reports->getCollection()->transform(function ($report) {
+        $report->formatted_jumlah_laporan = number_format($report->jumlah_laporan, 0, ',', '.');
+        return $report;
+    });
 
-        return view('admin.laporan', compact('reports', 'keyword'));
-    }
+    $reports->appends(['search' => $keyword]);
+
+    return view('admin.laporan', compact('reports', 'keyword'));
+}
+
+
 
     // Menyimpan laporan baru
     public function store(Request $request)

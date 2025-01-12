@@ -39,7 +39,7 @@
                                 <tr>
                                     <td>{{ $report->judul_laporan }}</td>
                                     <td>{{ $report->tanggal_laporan }}</td>
-                                    <td>{{ $report->jumlah_laporan }}</td>
+                                    <td>Rp. {{ number_format($report->jumlah_laporan, 0, ',', '.') }}</td>
                                     <td>{{ $report->jenis_laporan }}</td>
                                 </tr>
                             @endforeach
